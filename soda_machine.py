@@ -8,16 +8,16 @@ class SodaMachine:
         self.fill_register()
         self.inventory = []
         self.fill_inventory()
-        self.begin_transaction()
-        self.run_transaction()
-        self.calculate_transaction()
-        self.gather_change_from_register()
-        self.get_coin_from_register()
-        self.determine_change_value()
-        self.calculate_coin_value()
-        self.get_inventory_soda()
-        self.return_inventory()
-        self.deposit_coins_into_register()
+        # self.begin_transaction()
+        # self.run_transaction()
+        # self.calculate_transaction()
+        # self.gather_change_from_register()
+        # self.get_coin_from_register()
+        # self.determine_change_value()
+        # self.calculate_coin_value()
+        # self.get_inventory_soda()
+        # self.return_inventory()
+        # self.deposit_coins_into_register()
 
 
     def fill_register(self):
@@ -40,17 +40,17 @@ class SodaMachine:
         for index in range(10):
             self.inventory.append(cans.RootBeer())
 
-    def begin_transaction(self):
+    def begin_transaction(self, customer):
         """Method is complete. Initiates purchase if user decides to proceed. No errors."""
         will_proceed = user_interface.display_welcome()
         if will_proceed:
-            self.run_transaction(self)
+            self.run_transaction(customer)
 
     def run_transaction(self, customer):
 
-        user_interface.simulation_main_menu()
-        user_interface.validate_main_menu()
-        user_interface.display_customer_wallet_info()
+        user_input = user_interface.simulation_main_menu()
+        user_interface.validate_main_menu(user_input)
+        user_interface.display_customer_wallet_info(customer)
 
 
         selected_soda_name = user_interface.soda_selection(self.inventory)
