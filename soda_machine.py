@@ -8,16 +8,16 @@ class SodaMachine:
         self.fill_register()
         self.inventory = []
         self.fill_inventory()
-        # self.begin_transaction()
-        # self.run_transaction()
-        # self.calculate_transaction()
-        # self.gather_change_from_register()
-        # self.get_coin_from_register()
-        # self.determine_change_value()
-        # self.calculate_coin_value()
-        # self.get_inventory_soda()
-        # self.return_inventory()
-        # self.deposit_coins_into_register()
+        self.begin_transaction()
+        self.run_transaction()
+        self.calculate_transaction()
+        self.gather_change_from_register()
+        self.get_coin_from_register()
+        self.determine_change_value()
+        self.calculate_coin_value()
+        self.get_inventory_soda()
+        self.return_inventory()
+        self.deposit_coins_into_register()
 
 
     def fill_register(self):
@@ -114,7 +114,7 @@ class SodaMachine:
     def get_coin_from_register(self, coin_name):
         """Removes and returns a coin from register"""
         for coin in self.register:
-            if coin.name == "coin_name":
+            if coin.name == coin_name:
                 self.register.remove(coin)
                 return coin
         return None
@@ -132,6 +132,7 @@ class SodaMachine:
 
     def calculate_coin_value(self, coin_list):
         """Takes in a list of coins, returns the monetary value of list."""
+        total_value = 0
         for coin in coin_list:
             total_value += coin.value
         return round(total_value, 2)
@@ -139,7 +140,7 @@ class SodaMachine:
     def get_inventory_soda(self, selected_soda_name):
         """Returns the first instance of a can whose name matches the selected_soda_name parameter"""
         for can in self.inventory:
-            if can == selected_soda_name:
+            if can.name == selected_soda_name:
                 self.inventory.remove(can)
                 return can
         return None
